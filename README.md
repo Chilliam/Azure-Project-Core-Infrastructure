@@ -2,7 +2,7 @@
 Collection of Azure projects.
 ## Network Architecture
 
-![Network Diagram](screenshots/01-network-diagram.png)
+![Network Diagram](Azure Architecture Diagram.png)
 
 ## NSG Configuration
 
