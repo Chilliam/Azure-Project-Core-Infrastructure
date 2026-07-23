@@ -7,15 +7,15 @@ Collection of Azure projects.
 ## NSG Configuration
 
 Web subnet NSG — allows HTTP and SSH from my IP only:
-![NSG Web Rules](screenshots/02-nsg-rules-web.png)
+![NSG Web Rules](web-ns_rules.png)
 
 Data subnet NSG — allows only port 3306 from the web subnet, deny-all beneath it:
-![NSG Data Rules](screenshots/03-nsg-rules-data.png)
+![NSG Data Rules](data_nsg_rules.png)
 
 ## Load Balancing Verification
 
-![Server 1 Response](screenshots/04-lb-response-server1.png)
-![Server 2 Response](screenshots/05-lb-response-server2.png)
+![Server 1 Response](vm-web-01-response.png)
+![Server 2 Response](vm-web-02-response.png)
 
 ## Network Segmentation Proof
 
