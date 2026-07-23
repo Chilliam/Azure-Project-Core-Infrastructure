@@ -16,13 +16,14 @@ Data subnet NSG — allows only port 3306 from the web subnet, deny-all beneath 
 
 ![Server 1 Response](vm-web-01-response.png)
 ![Server 2 Response](vm-web-02-response.png)
+![Server 3 Response](Nginx_default_index.png)
 
 ## Network Segmentation Proof
 
 Direct SSH to the data VM fails from my local machine; succeeds only when
 routed through the web VM (jump-box pattern):
-![SSH Segmentation Test](.png)
-![SSH Segmentation Test](screenshots/06-ssh-blocked-vs-jumpbox.png)
+![SSH Segmentation Test](vm-data-from-local-refusal.png)
+![SSH Segmentation Test1](web-vm-to-data-vm.png)
 
 ## Lessons Learned
 
