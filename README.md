@@ -70,7 +70,8 @@ routed through the web VM (jump-box pattern):
 - **Load balancer behavior around outbound connectivity is a genuinely common real-world gotcha**, not an obscure edge case — worth knowing before it costs debugging time in a live environment.
 - **Apparent bugs are sometimes just unfamiliar-but-correct behavior.** The load balancer "not distributing traffic" turned out to be expected hashing/connection-reuse behavior, not a misconfiguration — a good reminder to verify with a tool built for the job (`curl` in a loop) before assuming something is broken.
 - **The jump-box (bastion) pattern and agent forwarding are foundational skills**, not a one-off trick — they came up repeatedly in every subsequent project in this series whenever a VM had no public IP by design.
-
+- Standard Load Balancer backend pool membership removes default outbound internet access for VMs without a public IP — had to add a NAT Gateway to the web subnet to restore connectivity for package installation.
+- Standard Load Balancer uses 5-tuple hashing rather than strict round-robin, so browser refreshes on the same connection can appear "sticky" to one backend; verified true distribution using repeated curl requests instead.
 ---
 
 ## Files in This Project
@@ -86,18 +87,3 @@ azure-project1-core-infrastructure/
 │   ├── lb-response-server2.png
 │   └── ssh-segmentation-proof.png
 ```
-
-
-
-
-
-## Lessons Learned
-
-- Standard Load Balancer backend pool membership removes default outbound
-  internet access for VMs without a public IP — had to add a NAT Gateway
-  to the web subnet to restore connectivity for package installation.
-- Standard Load Balancer uses 5-tuple hashing rather than strict
-  round-robin, so browser refreshes on the same connection can appear
-  "sticky" to one backend; verified true distribution using repeated
-  curl requests instead.
-
